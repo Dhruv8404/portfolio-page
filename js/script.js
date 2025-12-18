@@ -1,5 +1,11 @@
-// Custom JavaScript for Dhruv Patel's Portfolio
-const apiUrl = 'http://localhost:8000/api/contact';
+// Custom JavaScript for Dhruv Patel's Portfolio - NETLIFY VERSION
+// ============================================================
+
+// REMOVED: const apiUrl = 'http://localhost:8000/api/contact'; 
+// This won't work on Netlify!
+
+// Use Formspree instead (get your ID from formspree.io)
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xleqrzzk';
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -82,31 +88,33 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
     
-    // Prepare form data
+    // Prepare form data for Formspree
     const formData = {
         name: nameInput.value.trim(),
         email: emailInput.value.trim(),
         subject: subjectInput.value.trim(),
-        message: messageInput.value.trim()
+        message: messageInput.value.trim(),
+        _replyto: emailInput.value.trim(), // Important for replies
+        _subject: `Portfolio Contact: ${subjectInput.value.trim()}` // Email subject
     };
     
     try {
-        // Send to Python server
-        const response = await fetch(apiUrl, {
+        // Send to Formspree (works on Netlify!)
+        const response = await fetch(FORMSPREE_ENDPOINT, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(formData)
         });
         
-        const result = await response.json();
-        
-        if (result.success) {
+        // Formspree returns success if request was sent
+        if (response.ok) {
             // Show success message
             sendingMessage.style.display = 'none';
             successMessage.style.display = 'block';
-            document.getElementById('successText').textContent = result.message;
+            document.getElementById('successText').textContent = 'Your message has been sent successfully! I will get back to you soon.';
             
             // Reset form
             document.getElementById('contactForm').reset();
@@ -119,13 +127,13 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
             // Show error message
             sendingMessage.style.display = 'none';
             errorMessage.style.display = 'block';
-            document.getElementById('errorText').textContent = result.message || 'There was an error sending your message. Please try again.';
+            document.getElementById('errorText').textContent = 'Failed to send message. Please try again or email me directly.';
         }
     } catch (error) {
         // Show error message
         sendingMessage.style.display = 'none';
         errorMessage.style.display = 'block';
-        document.getElementById('errorText').textContent = 'Network error. Please make sure the Python server is running (localhost:8000).';
+        document.getElementById('errorText').textContent = 'Network error. Please check your connection and try again.';
         console.error('Error sending email:', error);
     } finally {
         // Reset button state

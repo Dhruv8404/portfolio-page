@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhruv Patel | Full Stack Developer</title>
     
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,9 +17,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- Tailwind CSS PRODUCTION CDN (Not the dev CDN) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -48,39 +47,40 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-lg">
-        <div class="container">
-            <a class="navbar-brand font-weight-bold text-xl d-flex align-items-center" href="#">
-                <i class="fas fa-code me-2" style="color: #3b82f6;"></i>Dhruv Patel
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#experience">Experience</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-lg">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="#">
+            <i class="fas fa-code me-2 text-info"></i>Dhruv Patel
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#experience">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-section pt-5 mt-5">
@@ -607,113 +607,78 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section py-5" style="background-color: #f8fafc;">
-        <div class="container py-5">
-            <div class="row mb-5">
-                <div class="col-12 text-center">
-                    <h2 class="section-title display-5 fw-bold mb-3">Contact Me</h2>
-                    <div class="title-underline mx-auto mb-4" style="background-color: #2563eb; height: 4px; width: 80px;"></div>
-                    <p class="text-muted lead">Interested in working together? Let's connect!</p>
-                </div>
+<!-- Contact Section -->
+<section id="contact" class="contact-section py-5 bg-light">
+    <div class="container py-5">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="section-title display-5 fw-bold text-dark mb-3">Contact Me</h2>
+                <div class="title-underline mx-auto bg-primary mb-4"></div>
+                <p class="text-muted lead">Interested in working together? Let's connect!</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <!-- Keep your contact info as is -->
             </div>
             
-            <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="contact-info">
-                        <div class="contact-item d-flex align-items-start mb-4">
-                            <div class="contact-icon text-white rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="background-color: #2563eb; width: 50px; height: 50px;">
-                                <i class="fas fa-envelope"></i>
+            <div class="col-lg-8">
+                <div class="contact-form bg-white p-4 p-md-5 rounded shadow">
+                    <!-- NETLIFY FORM - CHANGED LINE BELOW -->
+                    <form id="contactForm" name="contact" method="POST" netlify data-netlify="true">
+                        <!-- Hidden field for Netlify -->
+                        <input type="hidden" name="form-name" value="contact">
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Your Name *</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                                <div class="invalid-feedback">Please enter your name.</div>
                             </div>
-                            <div>
-                                <h5 class="mb-1">Email</h5>
-                                <p class="text-muted mb-0">pateldhruv2723@gmail.com</p>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Your Email *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback">Please enter a valid email.</div>
                             </div>
                         </div>
                         
-                        <div class="contact-item d-flex align-items-start mb-4">
-                            <div class="contact-icon text-white rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="background-color: #2563eb; width: 50px; height: 50px;">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-1">Location</h5>
-                                <p class="text-muted mb-0">Anand, Gujarat, India</p>
-                            </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                            <div class="invalid-feedback">Please enter a subject.</div>
                         </div>
                         
-                        <div class="social-links mt-5">
-                            <h5 class="mb-3">Connect with me</h5>
-                            <div class="d-flex gap-3">
-                                <a href="https://linkedin.com/in/dhruv-patel-867931339" target="_blank" class="social-link text-white rounded-circle d-flex align-items-center justify-content-center" style="background-color: #2563eb; width: 45px; height: 45px;">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://github.com/Dhruv8404" target="_blank" class="social-link text-white rounded-circle d-flex align-items-center justify-content-center" style="background-color: #1e293b; width: 45px; height: 45px;">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="resume/My Resume (3).pdf" target="_blank" class="social-link text-white rounded-circle d-flex align-items-center justify-content-center" style="background-color: #1e40af; width: 45px; height: 45px;">
-                                    <i class="fas fa-file-pdf"></i>
-                                </a>
-                            </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            <div class="invalid-feedback">Please enter your message.</div>
                         </div>
                         
-                        <!-- Contact Status Messages -->
-                        <div class="contact-status mt-5" id="contactStatus" style="display: none;">
-                            <div class="alert alert-success" id="successMessage" style="display: none;">
-                                <i class="fas fa-check-circle me-2"></i>
-                                <span id="successText">Your message has been sent successfully!</span>
-                            </div>
-                            <div class="alert alert-danger" id="errorMessage" style="display: none;">
-                                <i class="fas fa-exclamation-circle me-2"></i>
-                                <span id="errorText">There was an error sending your message. Please try again.</span>
-                            </div>
-                            <div class="alert alert-info" id="sendingMessage" style="display: none;">
-                                <i class="fas fa-spinner fa-spin me-2"></i>
-                                Sending your message...
-                            </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                            <small class="text-muted">* Required fields</small>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-8">
-                    <div class="contact-form bg-white p-4 p-md-5 rounded shadow">
-                        <form id="contactForm">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="name" class="form-label">Your Name *</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
-                                    <div class="invalid-feedback" id="nameError">Please enter your name.</div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="email" class="form-label">Your Email *</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                    <div class="invalid-feedback" id="emailError">Please enter a valid email address.</div>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="subject" class="form-label">Subject *</label>
-                                <input type="text" class="form-control" id="subject" name="subject" required>
-                                <div class="invalid-feedback" id="subjectError">Please enter a subject.</div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message *</label>
-                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                                <div class="invalid-feedback" id="messageError">Please enter your message.</div>
-                            </div>
-                            
-                            <div class="d-flex justify-content-between align-items-center">
-                                <button type="submit" class="btn btn-primary btn-lg px-5" id="submitBtn">
-                                    <i class="fas fa-paper-plane me-2"></i>Send Message
-                                </button>
-                                <small class="text-muted">* Required fields</small>
-                            </div>
-                        </form>
+                    </form>
+                    
+                    <!-- Success/Error messages -->
+                    <div class="contact-status mt-4" id="contactStatus" style="display: none;">
+                        <div class="alert alert-success" id="successMessage" style="display: none;">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <span>Your message has been sent successfully!</span>
+                        </div>
+                        <div class="alert alert-danger" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            <span>There was an error sending your message.</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="text-white py-4" style="background-color: #1e293b;">
@@ -730,9 +695,14 @@
     </footer>
 
     <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- At the BOTTOM of your body, just before closing </body> tag -->
+
+    <!-- Bootstrap 5 JS Bundle with Popper (MUST COME BEFORE CUSTOM JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     
     <!-- Custom JS -->
     <script src="js/script.js"></script>
+    
 </body>
+
 </html>

@@ -25,26 +25,69 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
-/* Navigation */
+/* Navbar Fixes */
 .navbar {
-    padding: 1rem 0;
+    padding: 0.8rem 0;
+    background-color: #1e293b !important;
     transition: all 0.3s ease;
-    background-color: var(--dark-color) !important;
 }
 
 .navbar-brand {
     font-size: 1.5rem;
+    color: white !important;
 }
 
-.nav-link {
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
     font-weight: 500;
     margin: 0 0.5rem;
-    transition: color 0.3s ease;
-    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
 }
 
-.nav-link:hover, .nav-link.active {
-    color: var(--accent-color) !important;
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #3b82f6 !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+/* Mobile Navbar Fix */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #1e293b;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-top: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .navbar-nav .nav-item {
+        margin: 0.3rem 0;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.7rem 1rem !important;
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile Toggle Button */
+.navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* Hero Section */
