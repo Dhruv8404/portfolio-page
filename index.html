@@ -20,28 +20,17 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#2563eb',
-                        secondary: '#1e40af',
-                        accent: '#3b82f6',
-                        dark: '#1e293b',
-                        light: '#f8fafc'
-                    },
-                    fontFamily: {
-                        'poppins': ['Poppins', 'sans-serif'],
-                        'inter': ['Inter', 'sans-serif']
-                    }
-                }
-            },
-            corePlugins: {
-                preflight: false, // Disable Tailwind's reset to avoid conflicts with Bootstrap
-            }
+ <!-- Remove Tailwind CSS CDN if you're using Bootstrap -->
+<!-- Or keep it but fix the config -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    // Simple config without errors
+    tailwind.config = {
+        theme: {
+            extend: {}
         }
-    </script>
+    }
+</script>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -656,9 +645,9 @@
                         </div>
                         
                         <div class="d-flex justify-content-between align-items-center">
-                            <button type="submit" class="btn btn-primary btn-lg px-5">
-                                <i class="fas fa-paper-plane me-2"></i>Send Message
-                            </button>
+                        <button type="submit" class="btn btn-primary btn-lg px-5" id="submitBtn">
+    <i class="fas fa-paper-plane me-2"></i>Send Message
+</button>
                             <small class="text-muted">* Required fields</small>
                         </div>
                     </form>

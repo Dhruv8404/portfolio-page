@@ -1,10 +1,7 @@
 // Custom JavaScript for Dhruv Patel's Portfolio - NETLIFY VERSION
 // ============================================================
 
-// REMOVED: const apiUrl = 'http://localhost:8000/api/contact'; 
-// This won't work on Netlify!
-
-// Use Formspree instead (get your ID from formspree.io)
+// Use Formspree (get your ID from formspree.io)
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xleqrzzk';
 
 // Smooth scrolling for navigation links
@@ -35,12 +32,21 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     const subjectInput = document.getElementById('subject');
     const messageInput = document.getElementById('message');
     const submitBtn = document.getElementById('submitBtn');
+    
+    // Check if button exists
+    if (!submitBtn) {
+        console.error('Submit button not found! Make sure button has id="submitBtn"');
+        return;
+    }
+    
     const originalBtnText = submitBtn.innerHTML;
     
     // Get status elements
     const contactStatus = document.getElementById('contactStatus');
     const successMessage = document.getElementById('successMessage');
+    const successText = document.getElementById('successText');
     const errorMessage = document.getElementById('errorMessage');
+    const errorText = document.getElementById('errorText');
     const sendingMessage = document.getElementById('sendingMessage');
     
     // Reset previous states
@@ -49,10 +55,10 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     subjectInput.classList.remove('is-invalid');
     messageInput.classList.remove('is-invalid');
     
-    successMessage.style.display = 'none';
-    errorMessage.style.display = 'none';
-    sendingMessage.style.display = 'none';
-    contactStatus.style.display = 'block';
+    if (successMessage) successMessage.style.display = 'none';
+    if (errorMessage) errorMessage.style.display = 'none';
+    if (sendingMessage) sendingMessage.style.display = 'none';
+    if (contactStatus) contactStatus.style.display = 'block';
     
     // Validate form
     let isValid = true;
@@ -78,13 +84,13 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
     }
     
     if (!isValid) {
-        errorMessage.style.display = 'block';
-        document.getElementById('errorText').textContent = 'Please fill in all required fields correctly.';
+        if (errorMessage) errorMessage.style.display = 'block';
+        if (errorText) errorText.textContent = 'Please fill in all required fields correctly.';
         return;
     }
     
     // Show sending state
-    sendingMessage.style.display = 'block';
+    if (sendingMessage) sendingMessage.style.display = 'block';
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
     
@@ -94,12 +100,12 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
         email: emailInput.value.trim(),
         subject: subjectInput.value.trim(),
         message: messageInput.value.trim(),
-        _replyto: emailInput.value.trim(), // Important for replies
-        _subject: `Portfolio Contact: ${subjectInput.value.trim()}` // Email subject
+        _replyto: emailInput.value.trim(),
+        _subject: `Portfolio Contact: ${subjectInput.value.trim()}`
     };
     
     try {
-        // Send to Formspree (works on Netlify!)
+        // Send to Formspree
         const response = await fetch(FORMSPREE_ENDPOINT, {
             method: 'POST',
             headers: {
@@ -109,31 +115,30 @@ document.getElementById('contactForm')?.addEventListener('submit', async functio
             body: JSON.stringify(formData)
         });
         
-        // Formspree returns success if request was sent
         if (response.ok) {
             // Show success message
-            sendingMessage.style.display = 'none';
-            successMessage.style.display = 'block';
-            document.getElementById('successText').textContent = 'Your message has been sent successfully! I will get back to you soon.';
+            if (sendingMessage) sendingMessage.style.display = 'none';
+            if (successMessage) successMessage.style.display = 'block';
+            if (successText) successText.textContent = 'Your message has been sent successfully! I will get back to you soon.';
             
             // Reset form
             document.getElementById('contactForm').reset();
             
             // Hide success message after 5 seconds
             setTimeout(() => {
-                contactStatus.style.display = 'none';
+                if (contactStatus) contactStatus.style.display = 'none';
             }, 5000);
         } else {
             // Show error message
-            sendingMessage.style.display = 'none';
-            errorMessage.style.display = 'block';
-            document.getElementById('errorText').textContent = 'Failed to send message. Please try again or email me directly.';
+            if (sendingMessage) sendingMessage.style.display = 'none';
+            if (errorMessage) errorMessage.style.display = 'block';
+            if (errorText) errorText.textContent = 'Failed to send message. Please try again or email me directly.';
         }
     } catch (error) {
         // Show error message
-        sendingMessage.style.display = 'none';
-        errorMessage.style.display = 'block';
-        document.getElementById('errorText').textContent = 'Network error. Please check your connection and try again.';
+        if (sendingMessage) sendingMessage.style.display = 'none';
+        if (errorMessage) errorMessage.style.display = 'block';
+        if (errorText) errorText.textContent = 'Network error. Please check your connection and try again.';
         console.error('Error sending email:', error);
     } finally {
         // Reset button state
@@ -151,9 +156,9 @@ function isValidEmail(email) {
 // Navbar background on scroll
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
+    if (navbar && window.scrollY > 50) {
         navbar.classList.add('navbar-scrolled');
-    } else {
+    } else if (navbar) {
         navbar.classList.remove('navbar-scrolled');
     }
 });
