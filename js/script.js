@@ -175,10 +175,14 @@ document.querySelectorAll('#contactForm input, #contactForm textarea')
         });
     });
 // Show success message after Netlify redirect
-if (window.location.search.includes('success=true')) {
-    const successBox = document.getElementById('formSuccess');
-    if (successBox) {
-        successBox.style.display = 'block';
-        successBox.scrollIntoView({ behavior: 'smooth' });
-    }
+if (contactForm) {
+  contactForm.addEventListener("submit", () => {
+    setTimeout(() => {
+      const successBox = document.getElementById("formSuccess");
+      if (successBox) {
+        successBox.style.display = "block";
+        successBox.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 800);
+  });
 }
