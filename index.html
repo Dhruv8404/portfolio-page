@@ -614,9 +614,22 @@
             
             <div class="col-lg-8">
                 <div class="contact-form bg-white p-4 p-md-5 rounded shadow">
-                    <!-- NETLIFY FORM - CHANGED LINE BELOW -->
-                    <form id="contactForm" name="contact" method="POST" data-netlify="true">
-                        <!-- Hidden field for Netlify -->
+                    <div
+  id="formSuccess"
+  class="alert alert-success mb-4"
+  style="display:none;"
+>
+  <i class="fas fa-check-circle me-2"></i>
+  Your message has been sent successfully!
+</div>
+<!-- NETLIFY FORM - CHANGED LINE BELOW -->
+                    <form
+  id="contactForm"
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  action="/?success=true">
+    <!-- Hidden field for Netlify -->
                         <input type="hidden" name="form-name" value="contact">
                         
                         <div class="row">
@@ -653,16 +666,7 @@
                     </form>
                     
                     <!-- Success/Error messages -->
-                    <div class="contact-status mt-4" id="contactStatus" style="display: none;">
-                        <div class="alert alert-success" id="successMessage" style="display: none;">
-                            <i class="fas fa-check-circle me-2"></i>
-                            <span>Your message has been sent successfully!</span>
-                        </div>
-                        <div class="alert alert-danger" id="errorMessage" style="display: none;">
-                            <i class="fas fa-exclamation-circle me-2"></i>
-                            <span>There was an error sending your message.</span>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>

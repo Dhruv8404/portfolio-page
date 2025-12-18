@@ -37,19 +37,12 @@ if (contactForm) {
         const messageInput = document.getElementById('message');
         const submitBtn = document.getElementById('submitBtn');
 
-        const contactStatus = document.getElementById('contactStatus');
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementById('errorMessage');
-
         let isValid = true;
 
-        // Reset UI
+        // Reset validation UI
         [nameInput, emailInput, subjectInput, messageInput].forEach(input => {
             input.classList.remove('is-invalid');
         });
-
-        if (successMessage) successMessage.style.display = 'none';
-        if (errorMessage) errorMessage.style.display = 'none';
 
         // Validation
         if (!nameInput.value.trim()) {
@@ -75,17 +68,16 @@ if (contactForm) {
         // ❌ Stop submit only if invalid
         if (!isValid) {
             e.preventDefault();
-            if (contactStatus) contactStatus.style.display = 'block';
-            if (errorMessage) errorMessage.style.display = 'block';
             return;
         }
 
-        // ✅ Allow Netlify submission
+        // ✅ Allow Netlify submit
         submitBtn.disabled = true;
         submitBtn.innerHTML =
             '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
     });
 }
+
 
 
 // ------------------------------------------------------------
@@ -182,3 +174,11 @@ document.querySelectorAll('#contactForm input, #contactForm textarea')
             }
         });
     });
+// Show success message after Netlify redirect
+if (window.location.search.includes('success=true')) {
+    const successBox = document.getElementById('formSuccess');
+    if (successBox) {
+        successBox.style.display = 'block';
+        successBox.scrollIntoView({ behavior: 'smooth' });
+    }
+}
