@@ -122,7 +122,7 @@
                 <div class="col-lg-6">
                     <div class="profile-image-container text-center position-relative">
                         <div class="profile-image-wrapper position-relative d-inline-block">
-                            <img src="assets\WhatsApp Image 2025-12-18 at 7.06.08 PM.jpeg" alt="Dhruv Patel" class="profile-img img-fluid rounded-circle border border-5 border-white shadow-lg" onerror="this.src='assets/profile.jpg'">
+                            <img src="assets/WhatsApp Image 2025-12-18 at 7.06.08 PM.jpeg" alt="Dhruv Patel" class="profile-img img-fluid rounded-circle border border-5 border-white shadow-lg" onerror="this.src='assets/profile.jpg'">
                             <div class="status-indicator bg-success rounded-circle position-absolute bottom-0 end-0 border border-3 border-white"></div>
                         </div>
                         <div class="experience-badge text-white rounded-pill py-2 px-4 mt-4 d-inline-block shadow" style="background-color: #2563eb;">
@@ -623,11 +623,14 @@
   Your message has been sent successfully!
 </div>
 <!-- NETLIFY FORM - CHANGED LINE BELOW -->
-                <form
+ <form
   id="contactForm"
   name="contact"
   method="POST"
-  data-netlify="true">
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+>
+
 
     <!-- Hidden field for Netlify -->
                         <input type="hidden" name="form-name" value="contact">
